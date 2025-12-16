@@ -8,7 +8,7 @@ import * as Plugin from "./quartz/plugins"
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "DDC Lore Vault",
+    pageTitle: "WUC Lore Vault",
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
