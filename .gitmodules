@@ -1,3 +1,6 @@
 [submodule "source/content-submodule"]
 	path = source/content-submodule
 	url = https://github.com/NeonSyzygy/WUC-Lore-Vault.git
+[submodule "source/quartz/static/Timeline-Viewer"]
+	path = source/quartz/static/Timeline-Viewer
+	url = https://github.com/NeonSyzygy/Timeline-Viewer
