@@ -6,32 +6,6 @@ on:
   workflow_dispatch:
 
 jobs:
-  prepare-submodule:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      - name: checkout repo
-        uses: actions/checkout@v3
-        with:
-          submodules: false
-
-      - name: Unpack submodule into Quartz folder
-        run: |
-          git config --file .gitmodules submodule.source/content-submodule.url https://${{ secrets.WUC_CANON_ACTIONS }}@github.com/NeonSyzygy/WUC-Lore-Vault.git
-          git submodule sync
-          git submodule update --init source/content-submodule
-          rm -rf source/content/*if quart
-          mkdir -p source/content
-          cp -r source/content-submodule/* source/content/
-          echo "Submodule unpacked into source/content"
-
-      - name: Upload content artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: site-content
-          path: source/content
-
   build-and-test:
     needs: prepare-submodule
     runs-on: ubuntu-latest
@@ -41,12 +15,6 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
-      - name: Download content artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: site-content
-          path: source/content
 
       - name: Setup Node
         uses: actions/setup-node@v4
